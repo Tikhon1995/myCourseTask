@@ -1,0 +1,89 @@
+function getFirstElement() {
+
+            setColorById();
+            var firstLi = document.getElementById('myLi');
+            var child = firstLi.firstElementChild;
+            console.log(child.childNodes);
+            if (child != null) {
+                child.style.color = 'red';
+            }
+        }
+
+        function getLastElement() {
+
+            setColorById();
+            var lastLi = document.getElementById('myLi');
+            var last = lastLi.lastElementChild;
+            if (last != null) {
+                last.style.color = 'red';
+
+            }
+        }
+
+        var node = null;
+
+        function getNextElement() {
+
+            setColorById();
+            if (node == null) {
+                var list = document.getElementById('myLi');
+                node = list.firstChild.nextSibling;
+                node.style.color = 'red';
+                return;
+            }
+            node = node.nextElementSibling;
+            if (node != null) {
+                node.style.color = 'red';
+
+            }
+        }
+
+        function getPreviousElement() {
+
+            setColorById();
+            if (node == null) {
+                var list = document.getElementById('myLi');
+                node = list.lastChild.previousSibling;
+                console.log(node);
+                node.style.color = 'red';
+                return;
+            }
+            node = node.previousElementSibling;
+            if (node != null) {
+                node.style.color = 'red';
+            }
+        }
+
+        function appendItem(form) {
+
+            if (form.input.value) {
+                var newItem = document.createElement("li");
+                newItem.innerHTML = form.input.value;
+                document.getElementById("myLi").append(newItem);
+            }
+        };
+
+        function prependItem(form) {
+
+            if (form.input.value) {
+                var newItem = document.createElement("li");
+                newItem.innerHTML = form.input.value;
+                document.getElementById("myLi").prepend(newItem);
+            }
+        };
+
+        function removeItem() {
+            var newItem = document.getElementById('myLi').lastElementChild;
+
+            if (newItem != null) {
+                newItem.parentNode.removeChild(newItem);
+            }
+        }
+
+        function setColorById() {
+            var list = document.getElementsByTagName("LI");
+
+            for (let i = 0; i < list.length; i++) {
+                list[i].style.color = "black";
+            }
+        };
